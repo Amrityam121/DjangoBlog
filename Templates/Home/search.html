@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title%}-search-{% endblock %}
+{% block body%}
+<div class="container" >
+<div class="col-md-12">
+ {% if allpost|length == 0 %}
+    <p><b>Nothing related found from searched keyword : {{query}}</b>  </p>
+     {% endif %}
+   {% if query|length == 0 %}
+    <p><b>Blank search:</b>  </p>
+     {% endif %}
+</div>
+</div>
+
+<div class="container" >
+{% for p in allpost %}
+<div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary"><h3>{{p.title}}</h3></strong>
+          <h3 class="mb-2">{{p.author}}</h3>
+          <div class="mb-1 text-muted">{{p.timestamp}}</div>
+          <p class="card-text mb-auto">{{p.content|truncatechars:100 }}..</p>
+            <a href="{{p.slug}}" class="stretched-link"><button type="button" class="btn btn-info">READ MORE..</button></a>
+        </div>
+       
+      </div>
+    </div>
+ {% endfor %}
+
+</div>
+{% endblock %}
