@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 def Home(request):
-    post = Post.objects.filter(slug='Thewikireport').first()
+    post = Post.objects.first()
     context = {'post': post}
     return render(request,'Home/index.html',context)
 
@@ -34,7 +34,7 @@ def search(request):
             query = request.GET.get('query')
             if query:
                 lookups = Q(title__icontains=query) | Q(content__icontains=query)
-                print(lookups)
+
                 allpost = Post.objects.filter(lookups).distinct()
                 print(allpost)
                 context = {'allpost':  allpost,'query':query }
@@ -69,6 +69,10 @@ def Signup(request):
             messages.error(request, 'password do not match')
             return redirect('Home')
 
+        if not ('@' in email and ".com" in email):
+           messages.error(request, 'Enter valid email address')
+           return redirect('Home')
+
 
         myuser = User.objects.create_user(user,email,pass1)
         myuser.First_name = Fname
@@ -100,6 +104,7 @@ def handlelogout(request):
        logout(request)
        messages.success(request, 'sucessfully logged off')
        return redirect('Home')
+
 
 
 

@@ -33,7 +33,7 @@
     </form>
 
       {% if user.is_authenticated %}
-      <button class="btn btn-outline-info my-2 mx-1 my-sm-0" type="submit"> <a href="Logout"> <b><i>{{request.user}}</i></b></a></button>
+      <button class="btn btn-outline-info my-2 mx-1 my-sm-0" type="submit"> <a href="\Logout"> <b><i>{{request.user}}</i></b></a></button>
 
 
       {% else %}
@@ -50,38 +50,38 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="Signup" method="post">
+      <form action="\Signup" method="post">
   <div class="form-group">
     <label for="Username">Username</label>
-    <input type="text" class="form-control" id="Username" name="Username" >    <!-- Username -->
+    <input type="text" class="form-control" id="Username" name="Username" required >    <!-- Username -->
     <small  class="form-text text-muted" aria-required="true">enter username.</small>
   </div>
   <div class="form-group">
     <label for="First">First name</label>
-    <input type="text" class="form-control" id="First"  name="First" >       <!-- first name -->
+    <input type="text" class="form-control" id="First"  name="First" required  >       <!-- first name -->
     <small  class="form-text text-muted" aria-required="true">enter first name.</small>
   </div>
                             {% csrf_token %}
   <div class="form-group">
     <label for="Last">Last name</label>
-    <input type="text" class="form-control" id="Last" name="Last">        <!-- last name -->
+    <input type="text" class="form-control" id="Last" name="Last" required >        <!-- last name -->
     <small class="form-text text-muted" aria-required="true">enter last name.</small>
   </div>
   <div class="form-group">
     <label for="Email">Email Address</label>
-    <input type="text" class="form-control" id="Email" name="Email" >       <!-- Email address -->
+    <input type="text" class="form-control" id="Email" name="Email" required  >       <!-- Email address -->
     <small  class="form-text text-muted"aria-required="true">enter email.</small>
   </div>
 
   <div class="form-group">
       <label for="pass1">Password</label>                                                            <!-- password -->
-    <input type="password" class="form-control" id="pass1" name="pass1">
+    <input type="password" class="form-control" id="pass1" name="pass1" required >
     <small  class="form-text text-muted" aria-required="true">enter password.</small>
   </div>
 
   <div class="form-group">
       <label for="pass2"> Confirm Password</label>
-      <input type="password" class="form-control" id="pass2" name="pass2">                             <!-- confirm password -->
+      <input type="password" class="form-control" id="pass2" name="pass2" required >                             <!-- confirm password -->
           <small  class="form-text text-muted"aria-required="true">enter confirm password.</small>
 
   </div>
@@ -106,15 +106,15 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="Login" method="post">
+      <form action="\Login" method="post">
   <div class="form-group">
     <label for="Loginuser">Username</label>
-    <input type="text" class="form-control" id="Loginuser" name="Loginuser">    <!-- Username for login -->
+    <input type="text" class="form-control" id="Loginuser" name="Loginuser" required >    <!-- Username for login -->
   </div>
  {% csrf_token %}
   <div class="form-group">
       <label for="Loginpass">Password</label>
-    <input type="password" class="form-control" id="Loginpass" name="Loginpass">                                <!-- password for login -->
+    <input type="password" class="form-control" id="Loginpass" name="Loginpass" required >                                <!-- password for login -->
   </div>
 
   <button type="submit" class="btn btn-primary">submit</button>                          <!-- submit button for login -->
